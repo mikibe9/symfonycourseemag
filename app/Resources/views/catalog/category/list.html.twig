@@ -18,16 +18,7 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.label }}</td>
                 <td><a href="{{ showUrl }}">Show</a></td>
-                <td><a class="pop-up" data-attr-category="pup-up-{{ category.id }}" href="#">Show</a>
-
-                    <div style="display: none">
-                        <div id="pup-up-{{ category.id }}" title="Basic dialog">
-                            {{ render(controller(
-                            'AppBundle:Catalog:editCategory',
-                            { 'categoryId': category.id }
-                            )) }}
-                        </div>
-                    </div>
+                <td><a class="pop-up" data-attr-category="{{ editUrl }}" href="#">Edit</a>
                 </td>
             </tr>
         {% endfor %}
@@ -35,8 +26,12 @@
     <script>
         $(document).ready(function () {
             $('.pop-up').click(function () {
-                var category = $(this).attr('data-attr-category');
-                $("#" + category).dialog();
+                var url = $(this).attr('data-attr-category');
+                var divArrea = $("<div/>");
+                divArrea.load(url, function () {
+                    divArrea.dialog({'autoOpen': true});
+                });
+                return false;
 
             });
         });

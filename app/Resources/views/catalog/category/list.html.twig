@@ -1,0 +1,47 @@
+{% extends 'common/app.html.twig' %}
+{% block header %} Categories {% endblock %}
+{% block content %}
+    <table border="1">
+        <tr>
+            <th>#</th>
+            <th>Category</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {% for category in categories %}
+            {% set showUrl = path(
+            'catalog_category_show',
+            {'categoryId': category.id}) %}
+            {% set editUrl = path(
+            'catalog_category_edit',
+            {'categoryId': category.id}) %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.label }}</td>
+                <td><a href="{{ showUrl }}">Show</a></td>
+                <td><a class="pop-up" data-attr-category="pup-up-{{ category.id }}" href="#">Show</a>
+
+                    <div style="display: none">
+                        <div id="pup-up-{{ category.id }}" title="Basic dialog">
+                            {{ render(controller(
+                            'AppBundle:Catalog:editCategory',
+                            { 'categoryId': category.id }
+                            )) }}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <script>
+        $(document).ready(function () {
+            $('.pop-up').click(function () {
+                var category = $(this).attr('data-attr-category');
+                $("#" + category).dialog();
+
+            });
+        });
+    </script>
+{% endblock %}
+{% block footer %}
+    <a href="{{ path('catalog_index') }}">Back to catalog</a>
+{% endblock %}

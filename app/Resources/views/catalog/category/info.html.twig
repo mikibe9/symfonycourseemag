@@ -1,0 +1,7 @@
+{% extends 'common/app.html.twig' %}
+{% block content %}
+    {% phpinfo %}
+{% endblock %}
+{% block footer %}
+    <a href="{{ path('catalog_category_list') }}">Back to list</a>
+{% endblock %}

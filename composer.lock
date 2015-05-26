@@ -869,12 +869,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "91239639b5b5c91a75ac2a07dbbfe4be0fd177d9"
+                "reference": "6d029424e80c3b91a1a7ad907535a8d1be36a467"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/91239639b5b5c91a75ac2a07dbbfe4be0fd177d9",
-                "reference": "91239639b5b5c91a75ac2a07dbbfe4be0fd177d9",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/6d029424e80c3b91a1a7ad907535a8d1be36a467",
+                "reference": "6d029424e80c3b91a1a7ad907535a8d1be36a467",
                 "shasum": ""
             },
             "require": {
@@ -939,7 +939,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2015-05-14 16:54:33"
+            "time": "2015-05-19 08:17:09"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -1373,17 +1373,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.22",
+            "version": "v3.0.24",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "0fe4ec86db57c232becb694e01cdabe3c4d9af7c"
+                "reference": "79b820aee1f1daeb2717fa9471ee19275cc1d638"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/0fe4ec86db57c232becb694e01cdabe3c4d9af7c",
-                "reference": "0fe4ec86db57c232becb694e01cdabe3c4d9af7c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/79b820aee1f1daeb2717fa9471ee19275cc1d638",
+                "reference": "79b820aee1f1daeb2717fa9471ee19275cc1d638",
                 "shasum": ""
             },
             "require": {
@@ -1429,7 +1429,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-05-02 16:23:08"
+            "time": "2015-05-16 12:57:08"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -1770,12 +1770,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "ba719d18ddac875e521223bde77205edc274d6e9"
+                "reference": "6f8d593b3a4ae21e04b9c5b2ed5529bfe519ab8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/ba719d18ddac875e521223bde77205edc274d6e9",
-                "reference": "ba719d18ddac875e521223bde77205edc274d6e9",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/6f8d593b3a4ae21e04b9c5b2ed5529bfe519ab8c",
+                "reference": "6f8d593b3a4ae21e04b9c5b2ed5529bfe519ab8c",
                 "shasum": ""
             },
             "require": {
@@ -1884,7 +1884,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-05-14 17:44:26"
+            "time": "2015-05-19 07:57:36"
         },
         {
             "name": "twig/extensions",

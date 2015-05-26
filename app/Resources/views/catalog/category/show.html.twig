@@ -11,13 +11,13 @@
         </tr>
         <tr>
             <td>Parent</td>
-            {% if(category.parent is null) %}
+            {% if(category.parentCategory is null) %}
                 <td>No parent</td>
             {% else %}
                 <td>
                     <a href="{{ path('catalog_category_show',
-                    {'categoryId': category.parent.id}) }}">
-                        {{ category.parent.label }}
+                    {'categoryId': category.parentCategory.id}) }}">
+                        {{ category.parentCategory.label }}
                     </a>
                 </td>
             {% endif %}

@@ -1,4 +1,3 @@
-{% extends 'common/app.html.twig' %}
 {% block header %} Edit category {% endblock %}
 {% block content %}
     <form method="post">
@@ -22,8 +21,8 @@
                         {% for parentCategory in parentCategories %}
                             {% set selected = '' %}
                             {% set parentId = 0 %}
-                            {% if category.parent is not null %}
-                                {% set parentId = category.parent.id %}
+                            {% if category.parentCategory is not null %}
+                                {% set parentId = category.parentCategory.id %}
                             {% endif %}
                             {% if parentId == parentCategory.id %}
                                 {% set selected = 'selected' %}
@@ -40,6 +39,5 @@
     </form>
 {% endblock %}
 {% block footer %}
-    {{ parent() }}
     <a href="{{ path('catalog_category_list') }}">Back to list</a>
 {% endblock %}

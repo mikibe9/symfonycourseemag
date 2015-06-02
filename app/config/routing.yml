@@ -1,3 +1,10 @@
 catalog:
     prefix: /catalog
     resource: "@AppBundle/Resources/config/routing/catalog.yml"
+
+app:
+  resource: "@AppBundle/Resources/config/routing.yml"
+
+AppBundle_category:
+        resource: "@AppBundle/Resources/config/routing/category.yml"
+        prefix:   /category

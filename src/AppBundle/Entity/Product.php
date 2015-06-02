@@ -210,4 +210,9 @@ class Product
     {
         return $this->warehouse;
     }
+
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
 }

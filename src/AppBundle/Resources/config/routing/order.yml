@@ -1,6 +1,8 @@
 order:
     path:     /
     defaults: { _controller: "AppBundle:Order:index" }
+    options:
+      menu: true
 
 order_show:
     path:     /{id}/show

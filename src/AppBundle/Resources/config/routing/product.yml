@@ -1,6 +1,8 @@
 product:
     path:     /
     defaults: { _controller: "AppBundle:Product:index" }
+    options:
+      menu: true
 
 product_show:
     path:     /{id}/show

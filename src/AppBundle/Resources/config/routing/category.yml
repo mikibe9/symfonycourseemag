@@ -1,6 +1,9 @@
 category:
     path:     /
     defaults: { _controller: "AppBundle:Category:index" }
+    options:
+      menu: true
+
 
 category_show:
     path:     /{id}/show

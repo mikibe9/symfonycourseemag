@@ -1,6 +1,8 @@
 productacquisition:
     path:     /
     defaults: { _controller: "AppBundle:ProductAcquisition:index" }
+    options:
+      menu: true
 
 productacquisition_show:
     path:     /{id}/show

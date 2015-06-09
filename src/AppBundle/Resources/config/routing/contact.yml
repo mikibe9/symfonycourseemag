@@ -1,6 +1,8 @@
 contact:
     path:     /
     defaults: { _controller: "AppBundle:Contact:index" }
+    options:
+     menu: true
 
 contact_show:
     path:     /{id}/show

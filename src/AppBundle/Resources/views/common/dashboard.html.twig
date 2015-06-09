@@ -1,0 +1,15 @@
+{% set rows = [] %}
+{% for page in routes %}
+    {% set row = {
+    'title': '<a href="'~page~'" ></a>',
+    } %}
+    {% set rows = rows|merge({(loop.index0): row}) %}
+{% endfor %}
+{{ include('AppBundle:common:listing-table.html.twig',
+{
+model: [
+{'title': 'Page'},
+],
+data: rows
+}
+) }}

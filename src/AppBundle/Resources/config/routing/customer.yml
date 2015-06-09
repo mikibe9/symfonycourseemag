@@ -1,6 +1,8 @@
 customer:
     path:     /
     defaults: { _controller: "AppBundle:Customer:index" }
+    options:
+      menu: true
 
 customer_show:
     path:     /{id}/show

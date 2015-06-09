@@ -1,6 +1,8 @@
 warehouse:
     path:     /
     defaults: { _controller: "AppBundle:Warehouse:index" }
+    options:
+      menu: true
 
 warehouse_show:
     path:     /{id}/show

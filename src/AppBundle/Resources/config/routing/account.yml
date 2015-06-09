@@ -1,6 +1,8 @@
 account:
     path:     /
     defaults: { _controller: "AppBundle:Account:index" }
+    options:
+      menu: true
 
 account_show:
     path:     /{id}/show

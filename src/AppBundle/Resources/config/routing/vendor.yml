@@ -1,6 +1,8 @@
 vendor:
     path:     /
     defaults: { _controller: "AppBundle:Vendor:index" }
+    options:
+      menu: true
 
 vendor_show:
     path:     /{id}/show

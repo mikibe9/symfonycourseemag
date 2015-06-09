@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product
 {
+    const REPOSITORY = 'AppBundle:Product';
 
     /**
      * @var integer
@@ -62,14 +63,14 @@ class Product
      */
     public function __construct()
     {
-        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->category  = new \Doctrine\Common\Collections\ArrayCollection();
         $this->warehouse = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -80,6 +81,7 @@ class Product
      * Set code
      *
      * @param string $code
+     *
      * @return Product
      */
     public function setCode($code)
@@ -92,7 +94,7 @@ class Product
     /**
      * Get code
      *
-     * @return string 
+     * @return string
      */
     public function getCode()
     {
@@ -103,6 +105,7 @@ class Product
      * Set title
      *
      * @param string $title
+     *
      * @return Product
      */
     public function setTitle($title)
@@ -115,7 +118,7 @@ class Product
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -126,6 +129,7 @@ class Product
      * Set description
      *
      * @param string $description
+     *
      * @return Product
      */
     public function setDescription($description)
@@ -138,7 +142,7 @@ class Product
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -149,6 +153,7 @@ class Product
      * Add category
      *
      * @param \AppBundle\Entity\Category $category
+     *
      * @return Product
      */
     public function addCategory(\AppBundle\Entity\Category $category)
@@ -171,7 +176,7 @@ class Product
     /**
      * Get category
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCategory()
     {
@@ -182,6 +187,7 @@ class Product
      * Add warehouse
      *
      * @param \AppBundle\Entity\Warehouse $warehouse
+     *
      * @return Product
      */
     public function addWarehouse(\AppBundle\Entity\Warehouse $warehouse)
@@ -204,7 +210,7 @@ class Product
     /**
      * Get warehouse
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWarehouse()
     {

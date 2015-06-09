@@ -1,6 +1,8 @@
 orderproductline:
     path:     /
     defaults: { _controller: "AppBundle:OrderProductLine:index" }
+    options:
+      menu: true
 
 orderproductline_show:
     path:     /{id}/show

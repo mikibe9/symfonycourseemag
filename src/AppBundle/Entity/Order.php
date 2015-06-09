@@ -9,9 +9,16 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="`order`", indexes={@ORM\Index(name="fk_order_customer_idx", columns={"customer_id"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Order
 {
+
+    const STATUS_NEW        = 1;
+    const STATUS_PROCESSING = 10;
+    const STATUS_DELIVERED  = 20;
+    const STATUS_CANCELLED  = 30;
+
     /**
      * @var integer
      *
@@ -45,12 +52,18 @@ class Order
      */
     private $customer;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="OrderProductLine", mappedBy="order")
+     */
+    private $productLines;
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -61,6 +74,7 @@ class Order
      * Set status
      *
      * @param integer $status
+     *
      * @return Order
      */
     public function setStatus($status)
@@ -73,7 +87,7 @@ class Order
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -84,6 +98,7 @@ class Order
      * Set createDate
      *
      * @param \DateTime $createDate
+     *
      * @return Order
      */
     public function setCreateDate($createDate)
@@ -96,7 +111,7 @@ class Order
     /**
      * Get createDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreateDate()
     {
@@ -107,6 +122,7 @@ class Order
      * Set customer
      *
      * @param \AppBundle\Entity\Customer $customer
+     *
      * @return Order
      */
     public function setCustomer(\AppBundle\Entity\Customer $customer = null)
@@ -119,15 +135,62 @@ class Order
     /**
      * Get customer
      *
-     * @return \AppBundle\Entity\Customer 
+     * @return \AppBundle\Entity\Customer
      */
     public function getCustomer()
     {
         return $this->customer;
     }
-    
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductLines()
+    {
+        return $this->productLines;
+    }
+
+    /**
+     * @param array $productLines
+     *
+     * @return $this
+     */
+    public function setProductLines(array $productLines)
+    {
+        $this->productLines = $productLines;
+
+        return $this;
+    }
+
+    /**
+     * @param OrderProductLine $productLine
+     *
+     * @return $this
+     */
+    public function addProductLine(OrderProductLine $productLine)
+    {
+        $productLine->setOrder($this);
+        $this->productLines[] = $productLine;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
-        return (string) $this->getId();
+        return (string)$this->getId();
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        if (!$this->id) {
+            $this->status = self::STATUS_NEW;
+            $this->createDate = new \DateTime('now');
+        }
     }
 }

@@ -11,6 +11,13 @@ function setupUi() {
         showLinkDialog(this);
         return false;
     });
+    $('.datepicker').on('focus', function () {
+        $(this).datepicker({
+            dateFormat: "yy-mm-dd"
+        }).datepicker('show');
+    });
+
+    $( ":checkbox" ).button();
 }
 
 function showLinkDialog(link) {
@@ -24,7 +31,7 @@ function showLinkDialog(link) {
         window.linkDialogUrls[id] = true;
         dialog = $('<div id="' + id + '"/>');
         dialog.load(url, function () {
-            dialog.dialog({modal: true, title:$(link).text()});
+            dialog.dialog({modal: true, title: $(link).text()});
             dialog.dialog('open');
         });
     } else {

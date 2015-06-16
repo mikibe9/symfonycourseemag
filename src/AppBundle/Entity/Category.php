@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Exception\LogicException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -10,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="category", indexes={@ORM\Index(name="fk_category_category_idx", columns={"parent_category_id"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Category
 {
@@ -69,7 +71,7 @@ class Category
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -80,6 +82,7 @@ class Category
      * Set label
      *
      * @param string $label
+     *
      * @return Category
      */
     public function setLabel($label)
@@ -92,7 +95,7 @@ class Category
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -103,6 +106,7 @@ class Category
      * Set parentCategory
      *
      * @param \AppBundle\Entity\Category $parentCategory
+     *
      * @return Category
      */
     public function setParentCategory(\AppBundle\Entity\Category $parentCategory = null)
@@ -115,7 +119,7 @@ class Category
     /**
      * Get parentCategory
      *
-     * @return \AppBundle\Entity\Category 
+     * @return \AppBundle\Entity\Category
      */
     public function getParentCategory()
     {
@@ -126,6 +130,7 @@ class Category
      * Add product
      *
      * @param \AppBundle\Entity\Product $product
+     *
      * @return Category
      */
     public function addProduct(\AppBundle\Entity\Product $product)
@@ -148,7 +153,7 @@ class Category
     /**
      * Get product
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProduct()
     {
@@ -168,7 +173,18 @@ class Category
         if (!$this->getParentCategory()) {
             return true;
         }
+
         return $this->getId() !== $this->getParentCategory()->getId();
+    }
+
+    /**
+     * @ORM\PreRemove
+     */
+    public function preRemove()
+    {
+        if (count($this->getProduct()) > 0) {
+            throw new LogicException('Cannot remove a category that has products');
+        }
     }
 
 }

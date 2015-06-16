@@ -9,6 +9,7 @@
     src="{{asset( 'bundles/app/js/app.js' )}}" ></script>
 {% endblock %}
 {% block body %}
+    {% include 'common/flash_messages.html.twig' %}
     <div id="container" class="ui-widget">
         <div id="header" class="ui-widget-header">
             {% block header %}

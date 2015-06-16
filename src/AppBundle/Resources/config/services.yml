@@ -1,0 +1,5 @@
+services:
+    app.listener.soft_delete:
+        class: AppBundle\Event\Listener\SoftDelete
+        tags:
+          - { name: doctrine.event_listener, event: onFlush }

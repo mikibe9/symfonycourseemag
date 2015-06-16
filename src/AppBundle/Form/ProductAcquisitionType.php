@@ -15,7 +15,7 @@ class ProductAcquisitionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('date', new DatePickerType())
             ->add('quantity')
             ->add('price')
             ->add('vendor')
